@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get 'users/' => 'users#index'
   get 'users/:id' => 'users#show'
 
-  get 'posts/' => 'posts#index'
-  get 'posts/:id' => 'posts#show'
+  get 'users/:user_id/posts' => 'posts#index'
+  get 'users/:user_id/posts/:id' => 'posts#show'
   # Defines the root path route ("/")
   root 'users#index'
 end
