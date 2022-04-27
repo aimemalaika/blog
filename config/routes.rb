@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get 'posts/' => 'posts#index'
   get 'posts/:id' => 'posts#show'
   # Defines the root path route ("/")
-  root "users#index"
+  root 'users#index'
 end
