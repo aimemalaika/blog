@@ -1,2 +1,42 @@
-<h1>Users#show</h1>
-<p>Here is a page for user <%= params[:id] %></p>
+<div class="container">
+  <h1 class="page-title"> <%= @user.Name %> Profile</h1>
+  <div class="row">
+    <div class="profile-picture">
+      <img src="<%= @user.Photo %>" alt="<%= @user.Name %>">
+    </div>
+    <div class="user-description">
+      <h1>
+        <%= @user.Name %> <a href="/users" class="view-details">Back</a>
+      </h1>
+      <p class="post-count">
+        Number of posts: <%= @user.PostsCounter %>
+      </p>
+    </div>
+  </div>
+  <div class="user-biography">
+    <h4>Biography</h4>
+    <p>
+      <%= @user.Bio %>
+    </p>
+  </div>
+  <h4 class="subtitles">Posts</h4>
+  <% if @user.posts.nil? || @user.posts.empty? %>
+    <p class="subtitles">No posts made yet !</p>
+  <% end %>
+  <% @user.posts.each_with_index do |post, index| if index < 3 %>
+    <div class="post-row">
+      <h4>Post #<%= index+1 %> </h4>
+      <p> <%= post.Text %> </p>
+      <div class="post-links">
+        <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="view-comment">comments: <%= post.CommentsCounter %> </a> | 
+        <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="view-likes">likes: <%= post.LikesCounter %> </a> | 
+        <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="view-post">Read More</a>
+      </div>
+    </div>
+  <% end end %>
+  <% if !@user.posts.nil? || !@user.posts.empty? %>
+  <div class="button-wrapper">
+    <a class="see-all-button" href="">See all posts</a>
+  </div>
+  <% end %>
+</div>

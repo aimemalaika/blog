@@ -1,2 +1,21 @@
-<h1>Users#index</h1>
-<p>Here is a list of users</p>
+<div class="container">
+  <h1 class="page-title"> Users List </h1>
+  <% if @users.nil? || @users.empty?%>
+    <p>There are no users in the database.</p>
+  <% end %>
+  <% @users&.each do |user| %>
+  <div class="row">
+    <div class="profile-picture">
+      <img src="<%= user.Photo %>" alt="<%= user.Name %>">
+    </div>
+    <div class="user-description">
+      <h1>
+        <%= user.Name %> <a href="/users/<%= user.id %> " class="view-details">View Details</a>
+      </h1>
+      <p class="post-count">
+        Number of posts: <%= user.PostsCounter %>
+      </p>
+    </div>
+  </div>    
+  <% end %>  
+</div>
