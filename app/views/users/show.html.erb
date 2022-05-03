@@ -36,7 +36,7 @@
   <% end end %>
   <% if !@user.posts.nil? || !@user.posts.empty? %>
   <div class="button-wrapper">
-    <a class="see-all-button" href="">See all posts</a>
+    <a class="see-all-button" href="/users/<%= @user.id %>/posts">See all posts</a>
   </div>
   <% end %>
 </div>
