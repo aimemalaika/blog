@@ -16,29 +16,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_30_105059) do
 
   create_table "comments", force: :cascade do |t|
     t.text "Text"
-    t.date "UpdatedAt"
-    t.date "CreatedAt"
+    t.date "UpdatedAt", default: "2022-05-03"
+    t.date "CreatedAt", default: "2022-05-03"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
+    t.bigint "author_id", null: false
     t.bigint "post_id", null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.date "CreatedAt"
-    t.date "UpdatedAt"
+    t.date "CreatedAt", default: "2022-05-03"
+    t.date "UpdatedAt", default: "2022-05-03"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
+    t.bigint "author_id", null: false
     t.bigint "post_id", null: false
+    t.index ["author_id"], name: "index_likes_on_author_id"
     t.index ["post_id"], name: "index_likes_on_post_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "logs", force: :cascade do |t|
-    t.date "login_time"
+    t.date "login_time", default: "2022-05-03"
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,31 +49,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_30_105059) do
   create_table "posts", force: :cascade do |t|
     t.string "Title"
     t.text "Text"
-    t.date "CreatedAt"
-    t.date "UpdatedAt"
-    t.integer "CommentsCounter"
-    t.integer "LikesCounter"
+    t.date "CreatedAt", default: "2022-05-03"
+    t.date "UpdatedAt", default: "2022-05-03"
+    t.integer "CommentsCounter", default: 0
+    t.integer "LikesCounter", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
+    t.bigint "author_id", null: false
+    t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "Name"
     t.string "Photo"
     t.text "Bio"
-    t.date "UpdatedAt"
-    t.date "CreatedAt"
-    t.integer "PostsCounter"
+    t.date "UpdatedAt", default: "2022-05-03"
+    t.date "CreatedAt", default: "2022-05-03"
+    t.integer "PostsCounter", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "likes", "posts"
-  add_foreign_key "likes", "users"
+  add_foreign_key "likes", "users", column: "author_id"
   add_foreign_key "logs", "users"
-  add_foreign_key "posts", "users"
+  add_foreign_key "posts", "users", column: "author_id"
 end

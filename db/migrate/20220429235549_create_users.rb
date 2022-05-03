@@ -4,9 +4,9 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :Name
       t.string :Photo
       t.text :Bio
-      t.date :UpdatedAt
-      t.date :CreatedAt
-      t.integer :PostsCounter
+      t.date :UpdatedAt, default: Date.today
+      t.date :CreatedAt, default: Date.today
+      t.integer :PostsCounter, default: 0
 
       t.timestamps
     end
