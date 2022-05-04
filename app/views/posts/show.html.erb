@@ -1,2 +1,28 @@
-<h1>Post details</h1>
-<p>Here is a page for post <%= params[:id] %> for user <%= params[:user_id] %></p>
+<div class="container">
+  <h1 class="page-title-left">
+    Post#<%= @post.id %> by <%= @post.post_author %>
+    <span class="view-comment">
+      comments: <%= @post.CommentsCounter %>, 
+      likes: <%= @post.LikesCounter %>
+    </span>
+  </h1>
+  <div class="back-link">
+    <a href="/users/<%= @post.author_id %>/posts">Back</a>
+  </div>
+  <div class="post-row">
+    <p> <%= @post.Text %> </p>
+  </div>
+  <div class="recent-comments">
+    <h4>Recent Comments</h4>
+    <% if @post.comments.nil? || @post.comments.empty? %>
+      <p>No comments made yet !</p>
+    <% end %>
+    <% @post.comments.each do |comment| %>
+      <div class="comment-row">
+        <p>
+          <%= comment.author_name %>: <%= comment.Text %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
