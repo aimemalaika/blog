@@ -26,7 +26,7 @@ body {
 
 .row {
   display: flex;
-  flex-wrap: row;
+  flex-direction: row;
 }
 
 .profile-picture {
