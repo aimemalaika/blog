@@ -6,6 +6,9 @@
       likes: <%= @post.LikesCounter %>
     </span>
   </h1>
+  <div class="back-link">
+    <a href="/users/<%= @post.author_id %>/posts">Back</a>
+  </div>
   <div class="post-row">
     <p> <%= @post.Text %> </p>
   </div>
