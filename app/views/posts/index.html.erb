@@ -1,2 +1,55 @@
-<h1>Posts index</h1>
-<p>Here is a list of posts for user <%= params[:user_id] %></p>
+<div class="container">
+  <h1 class="page-title"> <%= @user.Name %> Profile</h1>
+  <div class="row">
+    <div class="profile-picture">
+      <img src="<%= @user.Photo %>" alt="<%= @user.Name %>">
+    </div>
+    <div class="user-description">
+      <h1>
+        <%= @user.Name %> <a href="/users" class="view-details">Back</a>
+      </h1>
+      <p class="post-count">
+        Number of posts: <%= @user.PostsCounter %>
+      </p>
+    </div>
+  </div>
+  <div class="user-biography">
+    <h4>Biography</h4>
+    <p>
+      <%= @user.Bio %>
+    </p>
+  </div>
+  <h4 class="subtitles">Posts</h4>
+  <% if @user.posts.nil? || @user.posts.empty? %>
+    <p class="subtitles">No posts made yet !</p>
+  <% end %>
+  <% @user.posts.each_with_index do |post, index| %>
+    <div class="post-row">
+      <h4>Post #<%= index+1 %> </h4>
+      <p> <%= post.Text %> </p>
+      <div class="post-links">
+        <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="view-comment">comments: <%= post.CommentsCounter %> </a> | 
+        <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="view-likes">likes: <%= post.LikesCounter %> </a> | 
+        <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="view-post">Read More</a>
+      </div>
+      <div class="recent-comments">
+        <h4>Recent Comments</h4>
+        <% if post.recent_comments.nil? || post.recent_comments.empty? %>
+          <p>No comments made yet !</p>
+        <% end %>
+        <% post.recent_comments.each do |comment| %>
+          <div class="comment-row">
+            <p>
+              <%= comment.author_name %>: <%= comment.Text %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% unless @user.posts.nil? || @user.posts.empty? %>
+  <div class="button-wrapper">
+    <button class="see-all-button">Pagination</button>
+  </div>
+  <% end %>
+</div>

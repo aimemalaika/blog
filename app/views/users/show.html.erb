@@ -23,7 +23,7 @@
   <% if @user.posts.nil? || @user.posts.empty? %>
     <p class="subtitles">No posts made yet !</p>
   <% end %>
-  <% @user.posts.each_with_index do |post, index| if index < 3 %>
+  <% @user.recent_posts.each_with_index do |post, index| %>
     <div class="post-row">
       <h4>Post #<%= index+1 %> </h4>
       <p> <%= post.Text %> </p>
@@ -33,8 +33,8 @@
         <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="view-post">Read More</a>
       </div>
     </div>
-  <% end end %>
-  <% if !@user.posts.nil? || !@user.posts.empty? %>
+  <% end %>
+  <% unless @user.recent_posts.nil? || @user.recent_posts.empty? %>
   <div class="button-wrapper">
     <a class="see-all-button" href="/users/<%= @user.id %>/posts">See all posts</a>
   </div>

@@ -93,3 +93,20 @@ body {
   padding: 12px 20px;
   text-decoration: none;
 }
+
+.page-title-left {
+  text-align: left;
+  margin: 2%;
+}
+
+span.view-comment {
+  font-size: 15px;
+  font-weight: 300;
+  float: right;
+}
+
+.recent-comments {
+  margin: 2%;
+  border: 1px solid black;
+  padding: 15px;
+}
