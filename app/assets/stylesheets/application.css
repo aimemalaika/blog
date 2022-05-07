@@ -104,6 +104,7 @@ span.view-comment {
   font-size: 15px;
   font-weight: 300;
   float: right;
+  display: flex;
 }
 
 .recent-comments {
@@ -143,14 +144,14 @@ span.view-comment {
 }
 
 .form-group label {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   display: inline-block;
 }
 
 .form-control {
   display: block;
   width: 96%;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -161,9 +162,9 @@ span.view-comment {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: .25rem;
-  margin-bottom: .5rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .form-button {
@@ -180,10 +181,10 @@ span.view-comment {
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  border-radius: .25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .button-success {
@@ -205,4 +206,17 @@ span.view-comment {
 .post-new {
   width: 93% !important;
   margin-top: 5%;
+}
+
+.like-btn.like-button {
+  border: none;
+  background: none;
+  font-size: 16px;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.like-btn.like-button:hover {
+  text-decoration: underline;
+  color: #551a8b;
 }
