@@ -8,9 +8,10 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
+      flash[:success] = 'Comment was saved'
       redirect_to user_post_path(@comment.post.author_id, @comment.post.id)
     else
-      render 'new'
+      flash[:error] = 'Failed to add comment'
     end
   end
 
