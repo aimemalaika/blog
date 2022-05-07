@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 class="page-title"> New Users  <a class="title-link" href="/users">All Users</a></h1>
+  <div class="form">
+    <%= form_for @user  do |f| %>
+        <div class="form-group">
+            <%= f.label :Name %>
+            <%= f.text_field :Name, :class => "form-control", :required => "required" ,:placeholder => "Enter your full name" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :Photo %>
+            <%= f.url_field :Photo, :class => "form-control", :required => "required", :placeholder => "Add url to your picture" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :Bio %>
+            <%= f.text_area :Bio, :class => "form-control", :required => "required", :placeholder => "Enter your biography", :rows => 10 %>
+        </div>
+        <%= f.submit "Create User", :class => "form-button button-success" %>
+    <% end %>
+  </div>
+</div>

@@ -6,7 +6,9 @@
     </div>
     <div class="user-description">
       <h1>
-        <%= @user.Name %> <a href="/users" class="view-details">Back</a>
+        <%= @user.Name %>
+        <a href="/users" class="view-details">Back</a>
+        <a href="/users/<%= @user.id %>/posts/new" class="view-details">New Post</a>
       </h1>
       <p class="post-count">
         Number of posts: <%= @user.PostsCounter %>
