@@ -115,7 +115,7 @@ span.view-comment {
   width: 100%;
 }
 
-.comment-row p{
+.comment-row p {
   margin: 0;
 }
 
@@ -241,12 +241,13 @@ span.view-comment {
   display: flex;
   flex-direction: row;
 }
-.form-group.remember-me input{
+
+.form-group.remember-me input {
   height: 16px;
   margin: 1px 6px 0 0;
 }
 
-.form.login-form .page-title{
+.form.login-form .page-title {
   margin: 4% auto !important;
 }
 
@@ -257,7 +258,7 @@ span.view-comment {
   margin: 4% auto;
 }
 
-.form.login-form .form-links a{
+.form.login-form .form-links a {
   text-decoration: none;
 }
 
