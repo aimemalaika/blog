@@ -220,3 +220,31 @@ span.view-comment {
   text-decoration: underline;
   color: #551a8b;
 }
+
+.form.login-form {
+  width: 50%;
+}
+
+.form-group.remember-me {
+  display: flex;
+  flex-direction: row;
+}
+.form-group.remember-me input{
+  height: 16px;
+  margin: 1px 6px 0 0;
+}
+
+.form.login-form .page-title{
+  margin: 4% auto !important;
+}
+
+.form.login-form .form-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 4% auto;
+}
+
+.form.login-form .form-links a{
+  text-decoration: none;
+}
