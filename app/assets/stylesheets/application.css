@@ -60,7 +60,7 @@ body {
 .view-details {
   float: right;
   font-size: 15px;
-  margin: 0 20px;
+  margin: 16px 0;
 }
 
 .user-biography {
@@ -258,4 +258,8 @@ span.view-comment {
 
 .form.login-form .form-links a{
   text-decoration: none;
+}
+
+.btn-delete {
+  color: red;
 }

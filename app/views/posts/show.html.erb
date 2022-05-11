@@ -1,13 +1,13 @@
 <div class="container">
   <h1 class="page-title-left">
-    Post#<%= @post.id %> by <%= @post.post_author %>
+    Post#<%= @post.id %> by <%= @post.post_author %> 
     <span class="view-comment">
       comments: <%= @post.CommentsCounter %>, 
       <%= form_with model: @like , url:"/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
 				  <%= f.submit "Like", class: "like-btn like-button" %>: <%= @post.LikesCounter %></a>, 
 			<% end %>
       <%= form_with model: @post , url:"/users/#{@post.author_id}/posts/#{@post.id}", method: :delete do |f| %>
-          <%= f.submit "Delete", class: "like-btn like-button" %>
+          <%= f.submit "Delete", class: "like-btn like-button btn-delete" %>
       <% end %>
     </span>
   </h1>
@@ -27,7 +27,7 @@
           <p><%= comment.author_name %>: <%= comment.Text %></p>
           <div>
             <%= form_with model: @post , url:"/users/#{@post.author_id}/posts/#{@post.id}/comments/#{comment.id}", method: :delete do |f| %>
-                <%= f.submit "Delete", class: "like-btn like-button" %>
+                <%= f.submit "Delete", class: "like-btn like-button btn-delete" %>
             <% end %>
           </div>
       </div>
