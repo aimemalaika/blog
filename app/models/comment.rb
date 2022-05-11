@@ -4,10 +4,15 @@ class Comment < ApplicationRecord
 
   validates :Text, presence: true
 
-  after_save :update_comments_counter
+  after_save :update_comments_counter_add
+  after_destroy :update_comments_counter_delete 
 
-  def update_comments_counter
+  def update_comments_counter_add
     post.increment!(:CommentsCounter)
+  end
+
+  def update_comments_counter_delete
+    post.decrement!(:CommentsCounter)
   end
 
   def author_name

@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_09_204953) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_11_140331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.text "Text"
-    t.date "UpdatedAt", default: "2022-05-10"
-    t.date "CreatedAt", default: "2022-05-10"
+    t.date "UpdatedAt", default: "2022-05-11"
+    t.date "CreatedAt", default: "2022-05-11"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id", null: false
@@ -27,8 +27,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_204953) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.date "CreatedAt", default: "2022-05-10"
-    t.date "UpdatedAt", default: "2022-05-10"
+    t.date "CreatedAt", default: "2022-05-11"
+    t.date "UpdatedAt", default: "2022-05-11"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_204953) do
   end
 
   create_table "logs", force: :cascade do |t|
-    t.date "login_time", default: "2022-05-10"
+    t.date "login_time", default: "2022-05-11"
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,8 +49,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_204953) do
   create_table "posts", force: :cascade do |t|
     t.string "Title"
     t.text "Text"
-    t.date "CreatedAt", default: "2022-05-10"
-    t.date "UpdatedAt", default: "2022-05-10"
+    t.date "CreatedAt", default: "2022-05-11"
+    t.date "UpdatedAt", default: "2022-05-11"
     t.integer "CommentsCounter", default: 0
     t.integer "LikesCounter", default: 0
     t.datetime "created_at", null: false
@@ -63,8 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_204953) do
     t.string "Name"
     t.string "Photo"
     t.text "Bio"
-    t.date "UpdatedAt", default: "2022-05-10"
-    t.date "CreatedAt", default: "2022-05-10"
+    t.date "UpdatedAt", default: "2022-05-11"
+    t.date "CreatedAt", default: "2022-05-11"
     t.integer "PostsCounter", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -82,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_204953) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "Role", default: "user"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

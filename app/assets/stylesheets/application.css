@@ -107,6 +107,17 @@ span.view-comment {
   display: flex;
 }
 
+.comment-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.comment-row p{
+  margin: 0;
+}
+
 .recent-comments {
   margin: 2%;
   border: 1px solid black;

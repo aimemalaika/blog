@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
     if @comment.save
       flash[:success] = 'Comment was saved'
       redirect_to user_post_path(@comment.post.author_id, @comment.post.id)
@@ -15,7 +15,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to user_post_path(@comment.post.author_id, @comment.post.id)
+  end
+  
   def comment_params
-    params.require(:comment).permit(:Text, :author_id, :post_id)
+    params.require(:comment).permit(:Text, :post_id)
   end
 end
