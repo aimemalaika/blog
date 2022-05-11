@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="page-title"> <%= @user.Name %> Profile</h1>
+  <h1 class="page-title"> <%= current_user.Name %> Account <a href="/users/<%= @user.id %>/posts/new" class="view-details">New Post</a></h1>
   <div class="row">
     <div class="profile-picture">
       <img src="<%= @user.Photo %>" alt="<%= @user.Name %>">
@@ -8,7 +8,6 @@
       <h1>
         <%= @user.Name %>
         <a href="/users" class="view-details">Back</a>
-        <a href="/users/<%= @user.id %>/posts/new" class="view-details">New Post</a>
       </h1>
       <p class="post-count">
         Number of posts: <%= @user.PostsCounter %>

@@ -13,7 +13,6 @@
   <h1 class="page-title"> New Comment</h1>
   <div class="form post-new">
     <%= form_with :model => [ @user, @post, @post.comments.build ] do |form| %>
-      <%= form.text_field :author_id, :value => @user.id, :type => "hidden" %>
       <%= form.text_field :post_id, :type => "hidden" %>
       <div class="form-group">
         <%= form.label :Text, "Post Comment" %>

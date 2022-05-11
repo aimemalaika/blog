@@ -60,7 +60,7 @@ body {
 .view-details {
   float: right;
   font-size: 15px;
-  margin: 0 20px;
+  margin: 16px 0;
 }
 
 .user-biography {
@@ -105,6 +105,18 @@ span.view-comment {
   font-weight: 300;
   float: right;
   display: flex;
+}
+
+.comment-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.comment-row p {
+  margin: 0;
 }
 
 .recent-comments {
@@ -229,12 +241,13 @@ span.view-comment {
   display: flex;
   flex-direction: row;
 }
-.form-group.remember-me input{
+
+.form-group.remember-me input {
   height: 16px;
   margin: 1px 6px 0 0;
 }
 
-.form.login-form .page-title{
+.form.login-form .page-title {
   margin: 4% auto !important;
 }
 
@@ -245,6 +258,10 @@ span.view-comment {
   margin: 4% auto;
 }
 
-.form.login-form .form-links a{
+.form.login-form .form-links a {
   text-decoration: none;
+}
+
+.btn-delete {
+  color: red;
 }

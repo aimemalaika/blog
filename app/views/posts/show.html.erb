@@ -1,11 +1,16 @@
 <div class="container">
   <h1 class="page-title-left">
-    Post#<%= @post.id %> by <%= @post.post_author %>
+    Post#<%= @post.id %> by <%= @post.post_author %> 
     <span class="view-comment">
       comments: <%= @post.CommentsCounter %>, 
       <%= form_with model: @like , url:"/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
-				  <%= f.submit "Like", class: "like-btn like-button" %>: <%= @post.LikesCounter %></a>
+				  <%= f.submit "Like", class: "like-btn like-button" %>: <%= @post.LikesCounter %></a>, 
 			<% end %>
+      <% if can? :destroy, @post %>
+        <%= form_with model: @post , url:"/users/#{@post.author_id}/posts/#{@post.id}", method: :delete do |f| %>
+            <%= f.submit "Delete", class: "like-btn like-button btn-delete" %>
+        <% end %>
+      <% end %>
     </span>
   </h1>
   <div class="back-link">
@@ -21,9 +26,14 @@
     <% end %>
     <% @post.comments.each do |comment| %>
       <div class="comment-row">
-        <p>
-          <%= comment.author_name %>: <%= comment.Text %>
-        </p>
+          <p><%= comment.author_name %>: <%= comment.Text %></p>
+          <div>
+            <% if can? :destroy, comment %>
+              <%= form_with model: @post , url:"/users/#{@post.author_id}/posts/#{@post.id}/comments/#{comment.id}", method: :delete do |f| %>
+                  <%= f.submit "Delete", class: "like-btn like-button btn-delete" %>
+              <% end %>
+            <% end %>
+          </div>
       </div>
     <% end %>
   </div>

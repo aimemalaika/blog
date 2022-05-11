@@ -1,5 +1,6 @@
 <div class="container">
-  <h1 class="page-title"> Users List </h1>
+  <h1 class="page-title"><%= current_user.Name %> Account</h1>
+  <h3 class="page-title"> Users List </h3>
   <% if @users.nil? || @users.empty?%>
     <p>There are no users in the database.</p>
   <% end %>
