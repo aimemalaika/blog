@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   def new
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
@@ -20,7 +21,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to user_post_path(@comment.post.author_id, @comment.post.id)
   end
-  
+
   def comment_params
     params.require(:comment).permit(:Text, :post_id)
   end
