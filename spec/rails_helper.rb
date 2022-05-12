@@ -67,10 +67,11 @@ RSpec.configure do |config|
 
   Capybara.register_driver :chrome_headless do |app|
     Capybara::Selenium::Driver.new app,
-      browser: :chrome,
-      clear_session_storage: true,
-      clear_local_storage: true,
-      capabilities: [Selenium::Webdriver::Chrome::Options.new(args: %w[headless disable-gpu no-sandbox window-size=1280,800])]
+                                   browser: :chrome,
+                                   clear_session_storage: true,
+                                   clear_local_storage: true,
+                                   capabilities: [Selenium::Webdriver::Chrome::Options.new(
+                                     args: %w[headless disable-gpu no-sandbox window-size=1280,800]
+                                   )]
   end
-
 end
