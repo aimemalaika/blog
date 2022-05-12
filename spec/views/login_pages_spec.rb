@@ -56,4 +56,24 @@ RSpec.describe 'LoginPages', type: :system do
     click_button 'Log in'
     expect(page).to have_content 'Logged in as: Aime'
   end
+
+  it 'signs me in with valid email and password' do
+    visit '/users/sign_in'
+    within('#new_user') do
+      fill_in 'Email', with: 'ananie@test.com'
+      fill_in 'Password', with: 'password'
+    end
+    click_button 'Log in'
+    expect(page).to have_content 'Invalid credentials'
+  end
+
+  it 'signs me in with valid email and password' do
+    visit '/users/sign_in'
+    within('#new_user') do
+      fill_in 'Email', with: 'aime@test.com'
+      fill_in 'Password', with: 'anonymous'
+    end
+    click_button 'Log in'
+    expect(page).to have_content 'Invalid credentials'
+  end
 end
