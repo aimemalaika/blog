@@ -4,6 +4,30 @@ info:
   title: API V1
   version: v1
 paths:
+  "/blogs":
+    post:
+      summary: Creates a blog
+      tags:
+      - Blogs
+      parameters: []
+      responses:
+        '201':
+          description: blog created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+              required:
+              - title
+              - content
   "/login":
     post:
       summary: Login
@@ -12,7 +36,9 @@ paths:
       parameters: []
       responses:
         '200':
-          description: Login Successful
+          description:
+            message: Login Successful
+            auth_token: ds4324323h2h4h32h432
       requestBody:
         content:
           application/json:
@@ -28,8 +54,30 @@ paths:
               required:
               - email
               - password
+  "/users":
+    get:
+      summary: Get all users
+      tags:
+      - User
+      responses:
+        '200':
+          description: Get all users
+  "/users/{id}":
+    get:
+      summary: Get a user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get a user
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000/api/v1
