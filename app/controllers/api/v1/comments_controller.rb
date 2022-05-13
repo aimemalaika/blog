@@ -1,19 +1,20 @@
 class Api::V1::CommentsController < Api::V1::BaseController
-
   def index
-    @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
-
-    render json:@post.comments, status: :ok
+    render json: @post.comments, status: 200
   end
 
   def create
-    @comment = Comment.create(comment_params
-
-      render json:@comment, status: :ok
+    @comment = current_user.comments.new(comment_params)
+    @comment.post_id = params[:post_id]
+    if @comment.save
+      render json: @comment, status: 200
+    else
+      render json: { error: 'Failed to add comment' }, status: 400
+    end
   end
 
   def comment_params
-    params.require(:comment).permit(:Text, :post_id)
+    params.require(:comment).permit(:Text)
   end
 end

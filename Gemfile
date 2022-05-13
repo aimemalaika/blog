@@ -31,7 +31,7 @@ gem 'devise'
 
 gem 'cancancan'
 
-gem 'devise-jwt'
+gem 'jwt'
 
 gem 'ffi'
 
