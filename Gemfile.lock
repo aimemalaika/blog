@@ -111,6 +111,8 @@ GEM
     dry-core (0.7.1)
       concurrent-ruby (~> 1.0)
     erubi (1.10.0)
+    ffi (1.15.5)
+    ffi (1.15.5-x64-mingw-ucrt)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -282,6 +284,7 @@ DEPENDENCIES
   debug
   devise
   devise-jwt
+  ffi
   importmap-rails
   jbuilder
   pg (~> 1.1)
@@ -299,7 +302,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.1.1p18
 
 BUNDLED WITH
    2.3.7
