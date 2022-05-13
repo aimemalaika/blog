@@ -4,29 +4,52 @@ info:
   title: API V1
   version: v1
 paths:
-  "/blogs":
-    post:
-      summary: Creates a blog
+  "/users/{user_id}/posts/{post_id}/comments":
+    get:
+      summary: Get all comments
       tags:
-      - Blogs
-      parameters: []
+      - Comments
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get all comments
+    post:
+      summary: Create a comment
+      tags:
+      - Comments
+      parameters:
+      - bearer_token: header
+        in: header
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '201':
-          description: blog created
-        '422':
-          description: invalid request
+          description: Create a comment
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                title:
-                  type: string
                 content:
                   type: string
+                  example: This is a comment
               required:
-              - title
               - content
   "/login":
     post:
