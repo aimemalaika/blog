@@ -33,7 +33,11 @@ gem 'cancancan'
 
 gem 'jwt'
 
+gem 'devise-jwt'
+
 gem 'ffi'
+
+gem 'rswag'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
