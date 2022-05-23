@@ -1,2 +1,40 @@
-<h1>Post details</h1>
-<p>Here is a page for post <%= params[:id] %> for user <%= params[:user_id] %></p>
+<div class="container">
+  <h1 class="page-title-left">
+    Post#<%= @post.id %> by <%= @post.post_author %> 
+    <span class="view-comment">
+      comments: <%= @post.CommentsCounter %>, 
+      <%= form_with model: @like , url:"/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
+				  <%= f.submit "Like", class: "like-btn like-button" %>: <%= @post.LikesCounter %></a>, 
+			<% end %>
+      <% if can? :destroy, @post %>
+        <%= form_with model: @post , url:"/users/#{@post.author_id}/posts/#{@post.id}", method: :delete do |f| %>
+            <%= f.submit "Delete", class: "like-btn like-button btn-delete" %>
+        <% end %>
+      <% end %>
+    </span>
+  </h1>
+  <div class="back-link">
+    <a href="/users/<%= @post.author_id %>/posts">Back</a>
+  </div>
+  <div class="post-row">
+    <p> <%= @post.Text %> </p>
+  </div>
+  <div class="recent-comments">
+    <h4>Recent Comments <a class="view-details" href="/users/<%= @post.author_id %>/posts/<%= @post.id %>/comments/new">New Comment</a></h4>
+    <% if @post.comments.nil? || @post.comments.empty? %>
+      <p>No comments made yet !</p>
+    <% end %>
+    <% @post.comments.each do |comment| %>
+      <div class="comment-row">
+          <p><%= comment.author_name %>: <%= comment.Text %></p>
+          <div>
+            <% if can? :destroy, comment %>
+              <%= form_with model: @post , url:"/users/#{@post.author_id}/posts/#{@post.id}/comments/#{comment.id}", method: :delete do |f| %>
+                  <%= f.submit "Delete", class: "like-btn like-button btn-delete" %>
+              <% end %>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

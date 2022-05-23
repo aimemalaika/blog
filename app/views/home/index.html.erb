@@ -1,0 +1,11 @@
+<h1>Welcome to blog</h1>
+<p>
+    <!-- check if loggged in -->
+    <% unless user_signed_in? %>
+    <%= link_to 'Login', new_user_session_url %>
+    <% else %>
+        <p>Hell wlcome</p>
+        <!-- Implement logout -->
+        <%= link_to "Sign out", destroy_user_session_path,method: :get %>
+    <% end %>
+</p>

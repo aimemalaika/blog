@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="profile-picture">
+      <img src="<%= @user.Photo %>" alt="<%= @user.Name %>">
+    </div>
+    <div class="user-description">
+      <h1 class="new-post-header">
+        <%= @user.Name %>
+        <a href="/users/<%= @user.id %>/posts/<%= @post.id %>" class="view-details">All Comments</a>
+      </h1>
+    </div>
+  </div>
+  <h1 class="page-title"> New Comment</h1>
+  <div class="form post-new">
+    <%= form_with :model => [ @user, @post, @post.comments.build ] do |form| %>
+      <%= form.text_field :post_id, :type => "hidden" %>
+      <div class="form-group">
+        <%= form.label :Text, "Post Comment" %>
+        <%= form.text_area :Text, :class => "form-control", :required => "required", :placeholder => "Enter your comment", :rows => 5 %>
+      </div>
+      <%= form.submit "Create Comment", :class => "form-button button-success" %>
+    <% end %>
+  </div>
+</div>

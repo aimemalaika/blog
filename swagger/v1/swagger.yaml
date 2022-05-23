@@ -1,0 +1,106 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/users/{user_id}/posts/{post_id}/comments":
+    get:
+      summary: Get all comments
+      tags:
+      - Comments
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get all comments
+    post:
+      summary: Create a comment
+      tags:
+      - Comments
+      parameters:
+      - bearer_token: header
+        in: header
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Create a comment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  example: This is a comment
+              required:
+              - content
+  "/login":
+    post:
+      summary: Login
+      tags:
+      - User
+      parameters: []
+      responses:
+        '200':
+          description:
+            message: Login Successful
+            auth_token: ds4324323h2h4h32h432
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: aimemalaika@gmail.com
+                password:
+                  type: string
+                  example: '12345678'
+              required:
+              - email
+              - password
+  "/users":
+    get:
+      summary: Get all users
+      tags:
+      - User
+      responses:
+        '200':
+          description: Get all users
+  "/users/{id}":
+    get:
+      summary: Get a user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get a user
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000/api/v1
